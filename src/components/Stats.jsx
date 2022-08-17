@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MdSick } from "react-icons/md";
+import { RiSurgicalMaskFill } from "react-icons/ri";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { FaSkullCrossbones } from "react-icons/fa";
 import { BsFillPersonPlusFill } from "react-icons/bs";
@@ -11,7 +11,7 @@ const Stats = () => {
       <h3 className='section-title'>Stats</h3>
       <div className='box-container'>
         <StatBox
-          Icon={MdSick}
+          Icon={RiSurgicalMaskFill}
           details={{
             name: "Infected",
             number: 592398146,
@@ -41,7 +41,7 @@ const Stats = () => {
           Icon={BsFillPersonPlusFill}
           details={{
             name: "Active",
-            number: 6441842,
+            number: 585996983,
             lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
             iconColor: "#f4e0c9",
           }}
