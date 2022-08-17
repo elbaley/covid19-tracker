@@ -1,66 +1,51 @@
 import styled from "styled-components";
 import { MdSick } from "react-icons/md";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { FaSkullCrossbones } from "react-icons/fa";
+import { BsFillPersonPlusFill } from "react-icons/bs";
+import StatBox from "./StatBox";
+
 const Stats = () => {
   return (
     <Wrapper>
       <h3 className='section-title'>Stats</h3>
       <div className='box-container'>
-        <div className='box'>
-          <div className='box-icon blue'>
-            <MdSick />
-          </div>
-          <p className='box-title'>Infected</p>
-          <h4>
-            <span className='box-number'>592,398,146</span>
-          </h4>
-          <p className='box-updated'>
-            Last Updated at :
-            <span className='box-date'>Wed Aug 17 2022 2:20:58 PM</span>
-          </p>
-        </div>
-        {/* Box */}
-        <div className='box'>
-          <div className='box-icon blue'>
-            <MdSick />
-          </div>
-          <p className='box-title'>Infected</p>
-          <h4>
-            <span className='box-number'>592,398,146</span>
-          </h4>
-          <p className='box-updated'>
-            Last Updated at :
-            <span className='box-date'>Wed Aug 17 2022 2:20:58 PM</span>
-          </p>
-        </div>
-        {/* Box */}
-        <div className='box'>
-          <div className='box-icon blue'>
-            <MdSick />
-          </div>
-          <p className='box-title'>Infected</p>
-          <h4>
-            <span className='box-number'>592,398,146</span>
-          </h4>
-          <p className='box-updated'>
-            Last Updated at :
-            <span className='box-date'>Wed Aug 17 2022 2:20:58 PM</span>
-          </p>
-        </div>
-        {/* Box */}
-        <div className='box'>
-          <div className='box-icon blue'>
-            <MdSick />
-          </div>
-          <p className='box-title'>Infected</p>
-          <h4>
-            <span className='box-number'>592,398,146</span>
-          </h4>
-          <p className='box-updated'>
-            Last Updated at :
-            <span className='box-date'>Wed Aug 17 2022 2:20:58 PM</span>
-          </p>
-        </div>
-        {/* Box */}
+        <StatBox
+          Icon={MdSick}
+          details={{
+            name: "Infected",
+            number: 592398146,
+            lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
+            iconColor: "#b2d7fe",
+          }}
+        />
+        <StatBox
+          Icon={AiFillPlusCircle}
+          details={{
+            name: "Recovered",
+            number: 0,
+            lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
+            iconColor: "#dcf7e1",
+          }}
+        />
+        <StatBox
+          Icon={FaSkullCrossbones}
+          details={{
+            name: "Deaths",
+            number: 6441842,
+            lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
+            iconColor: "#f4d7d6",
+          }}
+        />
+        <StatBox
+          Icon={BsFillPersonPlusFill}
+          details={{
+            name: "Active",
+            number: 6441842,
+            lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
+            iconColor: "#f4e0c9",
+          }}
+        />
       </div>
     </Wrapper>
   );
@@ -87,43 +72,9 @@ const Wrapper = styled.section`
   .box-container {
     display: grid;
     margin-top: 2rem;
-    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+
     gap: 1rem;
-  }
-  .box {
-    background: #242529;
-    position: relative;
-    padding: 1rem 1.25rem;
-  }
-  .box-icon {
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    padding: 0.25rem;
-    font-size: 2rem;
-    color: black;
-    text-align: center;
-  }
-  .blue {
-    background-color: #b2d7fe;
-  }
-  .box-title {
-    margin-top: 2.5rem;
-    text-transform: uppercase;
-    font-family: "Source Code Pro", monospace;
-    letter-spacing: -1px;
-    color: #888c90;
-    font-size: 1.2rem;
-  }
-  .box-number {
-    font-size: 2rem;
-  }
-  .box-updated {
-    font-size: 1rem;
-  }
-  .box-date {
-    color: #888c90;
-    display: block;
-    font-size: 0.85rem;
   }
 `;
