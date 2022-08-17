@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CountrySelector from "./components/CountrySelector";
 import Header from "./components/Header";
 import Stats from "./components/Stats";
 
@@ -7,6 +8,7 @@ function App() {
     <Wrapper>
       <Header />
       <Stats />
+      <CountrySelector />
     </Wrapper>
   );
 }
