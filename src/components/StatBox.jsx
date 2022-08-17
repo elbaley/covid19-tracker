@@ -6,7 +6,9 @@ const StatBox = ({ Icon, details }) => {
       <div className='box-icon blue'>{<Icon />}</div>
       <p className='box-title'>{details.name}</p>
       <h4>
-        <span className='box-number'>{details.number}</span>
+        <span className='box-number'>
+          {Intl.NumberFormat().format(details.number)}
+        </span>
       </h4>
       <p className='box-updated'>
         Last Updated at :<span className='box-date'>{details.lastUpdated}</span>
