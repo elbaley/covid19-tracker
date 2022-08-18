@@ -1,11 +1,33 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CountrySelector = () => {
+  const [countryList, setCountryList] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("Global");
+  useEffect(() => {
+    fetch("https://covid19.mathdro.id/api/countries/")
+      .then((res) => res.json())
+      .then((data) => {
+        const filteredCountries = data.countries.filter(
+          (country) => country.iso3 !== undefined
+        );
+        setCountryList(filteredCountries);
+      });
+  }, []);
   return (
     <Wrapper>
-      <select className='country' name='country'>
-        <option value='TR'>Turkey</option>
-        <option value='USA'>United States of America</option>
+      <select
+        value={selectedCountry}
+        onChange={(e) => {
+          setSelectedCountry(e.target.value);
+        }}
+        className='country'
+        name='country'
+      >
+        <option value='Global'>Global</option>
+        {countryList?.map((country) => {
+          return <option value={country.iso3}>{country.name}</option>;
+        })}
       </select>
     </Wrapper>
   );
