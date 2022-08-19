@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { fetchCovidDataByCountry } from "../features/covid/covidSlice";
 
 const CountrySelector = () => {
+  const dispatch = useDispatch();
+
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("Global");
+
+  //set country list
   useEffect(() => {
     fetch("https://covid19.mathdro.id/api/countries/")
       .then((res) => res.json())
@@ -14,6 +20,11 @@ const CountrySelector = () => {
         setCountryList(filteredCountries);
       });
   }, []);
+
+  //get country data every time selected country changes
+  useEffect(() => {
+    dispatch(fetchCovidDataByCountry(selectedCountry));
+  }, [selectedCountry]);
   return (
     <Wrapper>
       <select
@@ -38,13 +49,13 @@ export default CountrySelector;
 const Wrapper = styled.div`
   margin-top: 2rem;
   .country {
+    -webkit-appearance: none;
     background: none;
-    /* background: #242529; */
     width: 300px;
     padding: 0.25rem 0;
-    border-radius: 0.2rem;
+    border-radius: 0rem;
     color: white;
-    border: none;
+    border: 0;
     border-bottom: 1px solid #ccc;
     display: block;
     margin: 0 auto;

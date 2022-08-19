@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import CountUp from "react-countup";
 
 const StatBox = ({ Icon, details }) => {
   return (
@@ -7,7 +9,16 @@ const StatBox = ({ Icon, details }) => {
       <p className='box-title'>{details.name}</p>
       <h4>
         <span className='box-number'>
-          {Intl.NumberFormat().format(details.number)}
+          {isNaN(details.number) ? (
+            0
+          ) : (
+            <CountUp
+              duration={1}
+              start={0}
+              separator=','
+              end={details.number}
+            />
+          )}
         </span>
       </h4>
       <p className='box-updated'>
@@ -52,6 +63,7 @@ const Wrapper = styled.article`
   }
   .box-updated {
     font-size: 1rem;
+    margin: 0;
   }
   .box-date {
     color: #888c90;

@@ -26,13 +26,14 @@ const Wrapper = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 0.2rem;
   h1 {
     margin: 2rem 0 0;
     font-size: 4rem;
   }
   p {
     margin-top: 0.25rem;
+    color: #888c90;
   }
   hr {
     width: 100%;

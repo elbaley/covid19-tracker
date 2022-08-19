@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { RiSurgicalMaskFill } from "react-icons/ri";
-import { AiFillPlusCircle } from "react-icons/ai";
 import { FaSkullCrossbones } from "react-icons/fa";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import StatBox from "./StatBox";
+import { useSelector } from "react-redux";
+import { selectCovid } from "../features/covid/covidSlice";
 
 const Stats = () => {
+  const covid = useSelector(selectCovid);
   return (
     <Wrapper>
       <h3 className='section-title'>Stats</h3>
@@ -14,25 +16,16 @@ const Stats = () => {
           Icon={RiSurgicalMaskFill}
           details={{
             name: "Infected",
-            number: 592398146,
+            number: covid?.covidData?.confirmed.value,
             lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
             iconColor: "#b2d7fe",
-          }}
-        />
-        <StatBox
-          Icon={AiFillPlusCircle}
-          details={{
-            name: "Recovered",
-            number: 0,
-            lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
-            iconColor: "#dcf7e1",
           }}
         />
         <StatBox
           Icon={FaSkullCrossbones}
           details={{
             name: "Deaths",
-            number: 6441842,
+            number: covid?.covidData?.deaths.value,
             lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
             iconColor: "#f4d7d6",
           }}
@@ -41,7 +34,9 @@ const Stats = () => {
           Icon={BsFillPersonPlusFill}
           details={{
             name: "Active",
-            number: 585996983,
+            number:
+              covid?.covidData?.confirmed.value -
+              covid?.covidData?.deaths.value,
             lastUpdated: "Wed Aug 17 2022 2:20:58 PM",
             iconColor: "#f4e0c9",
           }}
@@ -73,7 +68,7 @@ const Wrapper = styled.section`
     display: grid;
     margin-top: 2rem;
     /* grid-template-columns: repeat(4, 1fr); */
-    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
     gap: 1rem;
   }
