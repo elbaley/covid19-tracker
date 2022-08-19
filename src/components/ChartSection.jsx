@@ -60,21 +60,21 @@ const ChartSection = () => {
               datasets: [
                 {
                   fill: true,
-                  label: "Infected",
-                  data: covid?.dailyData?.map((day) => {
-                    return day.totalConfirmed;
-                  }),
-                  borderColor: "rgb(53, 162, 235)",
-                  backgroundColor: "#d6d6d6",
-                },
-                {
-                  fill: true,
                   label: "Deaths",
                   data: covid?.dailyData?.map((day) => {
                     return day.deaths.total;
                   }),
                   borderColor: "#dab8b7",
                   backgroundColor: "#f4d7d6",
+                },
+                {
+                  fill: true,
+                  label: "Infected",
+                  data: covid?.dailyData?.map((day) => {
+                    return day.totalConfirmed;
+                  }),
+                  borderColor: "rgb(53, 162, 235)",
+                  backgroundColor: "#d6d6d6",
                 },
               ],
             }}
